@@ -188,7 +188,7 @@ public class MainClass{
 
 		totalTPer = totalTPer + tPercent;
 
-		Console.WriteLine("The employee {0} of Technical Team {1}" ,tt.Name,tt.evaluateGrade(mPercent));
+		Console.WriteLine("The employee {0} of Technical Team {1}" ,tt.Name,tt.evaluateGrade(tPercent));
 
 	}
 

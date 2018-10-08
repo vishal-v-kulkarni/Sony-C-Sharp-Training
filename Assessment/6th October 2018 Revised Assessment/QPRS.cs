@@ -10,6 +10,9 @@ public class Employees{
 	public int GID;
 
 	public String evaluateGrade(int percent){
+
+		Console.WriteLine(percent);
+
 		if(percent >= 80 && percent <= 100){
 			return "is Outstanding";
 		}else if(percent >= 70 && percent < 80){
@@ -161,7 +164,7 @@ public class MainClass{
 		if(mt.busVolume > mt1.getTarget()){
 			mPercent = 100;
 		}else{
-			double dNum = mt.busVolume/mt1.getTarget();
+			double dNum = (double)mt.busVolume/(double)mt1.getTarget();
 			mPercent = Convert.ToInt32(dNum * 100);
 		}
 
@@ -173,11 +176,11 @@ public class MainClass{
 
 	public void evaluateTechPer(TechnicalTeam tt,TechnicalTeam tt1){
 
-		double dNum = tt.billAmt/tt1.getTarget();
+		double dNum = (double)tt.billAmt/(double)tt1.getTarget();
+
 		int iNum = Convert.ToInt32(dNum*100);
-
-		int iNum4 = Convert.ToInt32(iNum*0.6);
-
+		int iNum4 = Convert.ToInt32((double)iNum*0.6);
+		
 		int iNum2 = tt.techNum*10;
 		int iNum3 = tt.certNum*10;
 

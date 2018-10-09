@@ -1,0 +1,29 @@
+//Interface with unimplememted method
+interface ParentInterface{
+    void MethodToImplement1();
+}
+interface IMyInterface : ParentInterface{
+    void MethodToImplement();
+}
+
+class C{
+	public int a=10;
+}
+//Class which implements the interface IMyInterface
+class InterfaceImplementer : C,IMyInterface{
+	//Main method
+	public static void Main(){
+		InterfaceImplementer imp = new InterfaceImplementer();
+		imp.MethodToImplement();
+		imp.MethodToImplement1();
+		C c1 = new C();
+		Console.WriteLine(c1.a);
+	}
+
+	public void MethodToImplement(){
+		Console.WriteLine("MethodToImplement() called");
+	}
+	public void MethodToImplement1(){
+		Console.WriteLine("MethodToImplement1() called");
+	}
+}

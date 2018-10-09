@@ -1,0 +1,79 @@
+using System;
+
+namespace examples
+{
+    class Program
+    {
+	
+		enum Decide{
+				Continue,
+				Quit
+		}
+			
+        static void Main(string[] args)
+        {
+		
+			string myInput;
+			int myInt;
+			begin: 
+			
+			Console.WriteLine("Breakfast Menu");
+			Console.WriteLine("1.Idli and Vada");
+			Console.WriteLine("2.Dosa");
+			Console.WriteLine("3.Sandwitch");
+			Console.WriteLine("4.Puri");
+			Console.WriteLine("Please enter a number between 1 and 4");
+			
+			myInput = Console.ReadLine();
+			myInt = Int32.Parse(myInput);
+			
+			switch(myInt){
+				case 1:
+					Console.WriteLine("Your menu number is {0}",myInt);
+					break;
+				case 2:
+					Console.WriteLine("Your menu number is {0}",myInt);
+					break;
+				case 3:
+					Console.WriteLine("Your menu number is {0}",myInt);
+					break;
+				case 4:
+					Console.WriteLine("Your menu number is {0}",myInt);
+					break;
+				default:
+					Console.WriteLine("Your menu number {0} is not valid",myInt);
+					break;
+				
+			}
+			
+			decide:
+			
+			Console.WriteLine("Type \"0\" to go on or \"1\" to stop",myInt);
+			myInput = Console.ReadLine();
+			myInt = Int32.Parse(myInput);
+			
+			Decide d1 = Decide.Continue;
+			
+			if(myInt == 0){
+				d1 = Decide.Continue;
+			}else if(myInt == 1){
+				d1 = Decide.Quit;
+			}
+			
+			
+			
+			if(d1 == Decide.Continue){
+				goto begin;
+			}else if(d1 == Decide.Quit){
+				Console.WriteLine("Bye..!!");
+			}else{
+				Console.WriteLine("Your input {0} is incorrect ",myInt);
+				goto decide;
+			}
+			
+			
+		
+           
+		}
+    }
+}

@@ -1,0 +1,40 @@
+using System;
+using System.IO;
+
+//FileNotFoundException
+class TryCatchDemo{
+	static void Main(String[] args){
+		int flag=0;
+
+		try{
+			
+			int iNum1 = Int32.Parse(Console.ReadLine());
+			flag = 1;
+			Console.WriteLine("Divide : {0}",10/iNum1);
+			
+			int iNum2 = Int32.Parse(Console.ReadLine());
+			flag = 2; 
+			Console.WriteLine("Divide : {0}",20/iNum2);
+			
+		}catch(DivideByZeroException ex){
+			Console.WriteLine(ex.ToString());
+			if(flag==1){
+				Console.WriteLine("Exception at Line 2");
+			}else{
+				Console.WriteLine("Exception at Line 4");
+			}
+
+		}finally{
+			Console.WriteLine("Finally execeuted");
+		}
+	}
+
+}
+
+
+
+//1 
+// 2 source 1 and 4 source 2 numerical operations - may have zero error 
+
+// 1 and 3 getting input from different sources
+// 5 printing

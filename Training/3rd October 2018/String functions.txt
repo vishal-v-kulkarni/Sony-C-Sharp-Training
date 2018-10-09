@@ -1,0 +1,41 @@
+using System;
+using System.Text.RegularExpressions;
+
+//String manipulation functions
+namespace examples
+{
+    class Program
+    {
+	    // main method
+        static void Main(string[] args)
+        {
+			String strText1 = "Test Scripts";
+			String strText2 = "Test Scripts";
+
+			//Comparing using CompareTo
+			Console.WriteLine("Checking using CompareTo : "+ strText1.CompareTo(strText2).ToString()); //explicitly mention ToString 
+
+			//Comparing using Equals
+			Console.WriteLine("Checking using Equals : "+ strText1.Equals(strText2).ToString());
+
+			//Returning substring
+			Console.WriteLine("Returning the first 6 characters "+strText1.Substring(0,6));
+
+			//Returning the index of a character in a string
+			Console.WriteLine("Returning the index of a char in string "+strText1.IndexOf("Script"));
+
+			//Inserting in a String
+			Console.WriteLine("Inserting a String "+strText1.Insert(5,"VB"));
+
+			//Replacing chars in a string
+			Console.WriteLine("Replacing chars in a String "+strText1.Replace('s','x'));
+
+			//Removing a substring
+			Console.WriteLine("Removing last six chars "+strText1.Remove(5,6));
+
+
+			
+			
+		}
+    }
+}

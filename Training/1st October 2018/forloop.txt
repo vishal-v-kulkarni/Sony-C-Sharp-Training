@@ -1,0 +1,20 @@
+using System;
+
+namespace examples
+{
+    class Program
+    {
+	
+			
+        static void Main(string[] args)
+        {
+		
+			for(int iCounter=0;iCounter<10;iCounter++){
+				Console.WriteLine(iCounter+1);
+			}
+			
+		
+           
+		}
+    }
+}

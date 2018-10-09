@@ -1,0 +1,12 @@
+6th oct - assignment - task requirement then time bound assignment
+17th oct - mcq day 1 to 11 days concepts
+23rd oct - upto waveform generation
+Presentation on .NET assignment 
+29th oct - demonstration on code of new assignment - .net basics,delegates,mvc4,wcf service for interaction,sql server everything before devops
+
+7th nov - start of capstone project 3 weeks 10 days to 15 days 
+
+23rd or 24th Nov - demo to managers
+use case mapping
+why a particular option
+technical what we learnt

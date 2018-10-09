@@ -1,0 +1,158 @@
+using System;
+using System.Text.RegularExpressions;
+
+//Breakfast Menu using methods
+namespace examples
+{
+
+	class Menu{
+
+		public String name = "";
+		public int price = 0;
+		public int quantity = 0;
+		public int subTotal =0;
+	}
+
+    class Program{
+
+		public static int billTotal;
+		public static int billCounter;
+
+	    // main method
+        static void Main(string[] args){
+
+			String myChoice;
+
+			Program pg = new Program();
+
+			Menu[] menu = new Menu[5];
+
+			Console.WriteLine("Please enter the menu items (Only 5 Items)");
+
+			// Method to generate the Menu
+			pg.generateMenu(menu);
+			
+			//Print the Menu
+			pg.printMenu(menu);
+
+			do{
+				
+				//get input from user
+				myChoice = Console.ReadLine();
+
+				//Make decision based on the user's choice
+				pg.makeDecision(myChoice,menu);
+
+			}while(myChoice != "Y" && myChoice!= "y"); //Keep going until the user wants to quit
+
+			
+			
+		}
+
+
+		void makeDecision(String myChoice,Menu[] menu){
+
+			switch(myChoice){
+				case "A":
+				case "a":
+					billCounter++;
+					menu[0].quantity++;
+					menu[0].subTotal = menu[0].quantity * menu[0].price;
+					billTotal =billTotal + menu[0].subTotal;
+					break;
+				case "B":
+				case "b":
+					billCounter++;
+					menu[1].quantity++;
+					menu[1].subTotal = menu[1].quantity * menu[1].price;
+					billTotal =billTotal + menu[1].subTotal;
+					break;
+				case "C":
+				case "c":
+					billCounter++;
+					menu[2].quantity++;
+					menu[2].subTotal = menu[2].quantity * menu[2].price;
+					billTotal =billTotal + menu[2].subTotal;
+					break;
+				case "D":
+				case "d":
+					billCounter++;
+					menu[3].quantity++;
+					menu[3].subTotal = menu[3].quantity * menu[3].price;
+					billTotal =billTotal + menu[3].subTotal;
+					break;
+				case "E":
+				case "e":
+					billCounter++;
+					menu[4].quantity++;
+					menu[4].subTotal = menu[4].quantity * menu[4].price;
+					billTotal =billTotal + menu[4].subTotal;
+					break;
+				case "P":
+				case "p":
+					this.billPrint(menu);
+					break;
+				default:
+					Console.WriteLine("Are you sure to exit.? Press Y to exit or N to continue");
+					String choice = Console.ReadLine();
+					break;
+
+			}
+
+		}
+
+		public void billPrint(Menu[] menu){
+			Console.WriteLine("Sl.No. \t Name \t Quantity \t Price");
+			for(int iCounter=0;iCounter<5;iCounter++){
+				Console.WriteLine("{0} \t {1} \t {2} \t Rs.{3}",iCounter+1,menu[iCounter].name,menu[iCounter].quantity,menu[iCounter].subTotal);
+			}
+			Console.WriteLine("Total Items : \t {0} Total Price : \t Rs.{1}",billCounter,billTotal);
+		}
+
+		public void generateMenu(Menu[] menu){
+			menu[0] = new Menu();
+			menu[0].name = "Idli";
+			menu[0].price = 20;
+
+			menu[1] = new Menu();
+			menu[1].name = "Dosa";
+			menu[1].price = 30;
+
+			menu[2] = new Menu();
+			menu[2].name = "Pasta";
+			menu[2].price = 40;
+
+			menu[3] = new Menu();
+			menu[3].name = "Upma";
+			menu[3].price = 15;
+
+			menu[4] = new Menu();
+			menu[4].name = "Puri";
+			menu[4].price = 35;
+		}
+
+		public void printMenu(Menu[] menu){
+			int ascii = 65;
+			Console.WriteLine("My Breakfast Menu : ");
+			Console.WriteLine("   Name \t Price");
+			for(int iCounter=0;iCounter<5;iCounter++){
+				Console.WriteLine("{0}. {1} \t {2}",Convert.ToChar(ascii),menu[iCounter].name,menu[iCounter].price);
+				ascii++;
+			}
+			Console.WriteLine("P. Print Bill");
+			Console.WriteLine();
+			Console.WriteLine("Press (A,B,C,D,E or P) to choose : ");
+		}
+
+		
+    }
+}
+
+
+//generateMenu - prepare the menu
+//printMenu - print the menu
+//billPrint send to printer through array
+
+/*for(int iCounter=0;iCounter<5;iCounter++){
+				Console.WriteLine("Name : {0} \t Price : {1} ",menu[iCounter].name,menu[iCounter].price);
+			}*/

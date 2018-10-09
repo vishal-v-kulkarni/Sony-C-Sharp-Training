@@ -1,0 +1,64 @@
+using System;
+using System.Collections;
+
+public class Person{
+	public String firstName;
+	String lastName;
+	int age;
+
+	// Person class parameterized constructor
+	public Person(String fName,String lName,int age){
+		firstName = fName;
+		lastName = lName;
+		this.age = age;
+	}
+
+	public String getName(){
+		return firstName;
+	}
+	override public String ToString(){
+		return "Firstname : "+firstName+" Lastname : "+lastName+" Age : "+age;
+	}
+
+
+}
+
+public class MainClass{
+	public static void Main(){
+
+		Person p1 = new Person("Raif","Razak",22);
+		Person p2 = new Person("Tejas","Hegde",22);
+		Person p3 = new Person("Vishal","Kulkrni",22);
+		Person p4 = new Person("Pradeep","Tripathi",22);
+		ArrayList sList = new ArrayList();
+
+		sList.Add(p1);
+		sList.Add(p2);
+		sList.Add(p3);
+		sList.Add(p4);
+
+		PrintValues(sList);
+
+		int iCounter1 = -1;
+		for(int iCounter=0;iCounter<sList.Count;iCounter++){
+			if(((Person)sList[iCounter]).firstName == "Vishal"){
+				iCounter1 = iCounter;
+				break;
+			}
+		}
+
+
+		sList[iCounter1] = new Person("Vishal","Kulkarni",22);
+		//((Person)sList[iCounter]).lastName = "Kulkarni";
+
+		PrintValues(sList);
+	
+	
+}
+
+	public static void PrintValues(IEnumerable myList){
+		foreach(Object obj in myList){
+			Console.Write(obj+"\n");
+		}
+	}
+}

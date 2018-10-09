@@ -1,0 +1,31 @@
+using System;
+
+namespace examples
+{
+    class Program
+    {
+	
+		enum Days{
+				Monday,
+				Tuesday,
+				Wednesday,
+				Thursday,
+				Friday,
+				Saturday,
+				Sunday
+		}
+			
+        static void Main(string[] args)
+        {
+			Days day = Days.Monday;
+			if(day == Days.Monday){
+				Console.WriteLine("It is Monday");
+			}
+			
+			Console.WriteLine(day);
+			
+
+           
+		}
+    }
+}

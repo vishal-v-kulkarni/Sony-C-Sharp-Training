@@ -1,0 +1,4 @@
+Create a folder like "examples"
+Move into the directory and give "dotnet new console" it will create the necessary files needed for console application
+"dotnet run" to run the examples.dll
+"dotnet build" to build the project

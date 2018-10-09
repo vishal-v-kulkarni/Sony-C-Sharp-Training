@@ -1,0 +1,21 @@
+using System;
+
+namespace examples
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+		
+			bool male = false;
+			
+			if(male){
+				Console.WriteLine("We will use name John");
+				
+			}else{
+				Console.WriteLine("We will use name Jenny");
+			}
+           
+		}
+    }
+}

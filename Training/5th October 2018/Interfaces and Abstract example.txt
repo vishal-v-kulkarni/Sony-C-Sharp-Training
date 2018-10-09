@@ -1,0 +1,90 @@
+using System;
+
+// Interface for Engine
+interface IEngine{
+
+    //Unimplemented method
+    void fuelingEngine();
+}
+
+// Abstract class for Engine
+public abstract class AEngine{
+
+    //Implemented method
+    public void carRunning(){
+        Console.WriteLine("The car is running");
+    }
+
+    //Virtual method
+    public virtual void calculateMileage(){}
+
+}
+
+class petrolCar : AEngine, IEngine{
+
+	//Overriding the virtual method from Abstract class
+	public override void calculateMileage(){
+		Console.WriteLine("Best mileage");
+	}
+
+	// Implementing the unimplemented method from interface
+	public void fuelingEngine(){
+		Console.WriteLine("This car runs on Petrol");
+	}
+}
+
+class dieselCar : AEngine, IEngine{
+
+	//Overriding the virtual method from Abstract class
+	public override void calculateMileage(){
+		Console.WriteLine("Good mileage");
+	}
+
+	// Implementing the unimplemented method from interface
+	public void fuelingEngine(){
+		Console.WriteLine("This car runs on Diesel");
+	}
+}
+
+class CNGCar : AEngine,IEngine{
+
+	//Overriding the virtual method from Abstract class
+	public override void calculateMileage(){
+		Console.WriteLine("Average mileage");
+	}
+
+	// Implementing the unimplemented method from interface
+	public void fuelingEngine(){
+		Console.WriteLine("This car runs on CNG");
+	}
+
+}
+
+class MainClass{
+
+	//Main method 
+	public static void Main(){
+
+		Console.WriteLine("Petrol Car");
+		petrolCar pc = new petrolCar();
+		pc.carRunning();
+		pc.fuelingEngine();
+		pc.calculateMileage();
+		Console.WriteLine();
+
+		Console.WriteLine("Diesel Car");
+		dieselCar dc = new dieselCar();
+		dc.carRunning();
+		dc.fuelingEngine();
+		dc.calculateMileage();
+		Console.WriteLine();
+
+		Console.WriteLine("CNG Car");
+		CNGCar cc = new CNGCar();
+		cc.carRunning();
+		cc.fuelingEngine();
+		cc.calculateMileage();
+
+	}
+}
+

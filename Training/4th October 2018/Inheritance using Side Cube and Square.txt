@@ -1,0 +1,55 @@
+using System;
+
+
+// Class Side containing the length
+public class Side{
+	public int length;
+	public Side(){
+		length = 5;
+	}
+}
+
+//Class square
+public class Square : Side{
+
+	// Square Constructor
+	public Square(){
+		//
+	}
+
+	// Method to calculate the area of a square
+	public void area(){
+
+		Console.WriteLine("Area of a Square : {0}",length*length);
+
+	}
+}
+
+// Class Cube
+public class Cube : Side{
+
+	// Cube Constructor
+	public Cube(){
+		//
+	}
+
+	// Method to calculate the volume of a cube
+	public void volume(){
+
+		Console.WriteLine("Volume of a Cube : {0}",length*length*length);
+		
+	}
+}
+
+// Main class
+public class mainClass{
+
+	//Main method where execution begins
+	public static void Main(){
+		Square square = new Square(); //object of class square
+		square.area(); 				  // call area() method
+		Cube cube = new Cube(); //object of class cube
+		cube.volume();			// call volume() method;
+	}
+}
+

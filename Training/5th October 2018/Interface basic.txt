@@ -1,0 +1,18 @@
+using System;
+
+interface IMyInterface : ParentInterface{
+    void MethodToImplement();
+}
+
+//Class which implements the interface IMyInterface
+class InterfaceImplementer : IMyInterface{
+	//Main method
+	public static void Main(){
+		InterfaceImplementer imp = new InterfaceImplementer();
+		imp.MethodToImplement();
+	}
+
+	public void MethodToImplement(){
+		Console.WriteLine("MethodToImplement() called");
+	}
+}

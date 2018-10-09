@@ -1,0 +1,38 @@
+public class MainClass{
+	public static void Main(){
+
+		ArrayList sList = new ArrayList();
+
+		sList.Add("A");
+		sList.Add("B");
+		sList.Add("C");
+		sList.Add("D");
+		sList.Add("E");
+		sList.Add("F");
+
+		PrintValues(sList);
+
+		sList.Remove("A");
+	
+		PrintValues(sList);
+
+		sList.RemoveAt(0);
+
+		PrintValues(sList);
+
+		sList.RemoveRange(0,2);
+
+		PrintValues(sList);
+		
+		sList.Insert(0,"ABCD");
+
+		PrintValues(sList);
+	}
+
+	public static void PrintValues(IEnumerable myList){
+		foreach(Object obj in myList){
+			Console.Write(obj);
+		}
+		Console.WriteLine();
+	}
+}

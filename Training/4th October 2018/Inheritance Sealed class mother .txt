@@ -1,0 +1,74 @@
+using System;
+
+sealed class Mother {
+	int mCost;
+
+	public Mother(int mCost){
+		this.mCost = mCost;
+	}
+
+	public double getInterest(){
+		return (0.1*mCost);
+	}
+
+}
+
+public class Grandfather{
+	int gcost;
+
+	public Grandfather(int gcost){
+		this.gcost = gcost;
+	}
+
+	public int getGCost(){
+		return gcost;
+	}
+
+}
+
+// Class Father
+public class Father : Grandfather{
+	int fcost;
+
+	public Father(int fcost,int gcost) : base(gcost){
+		this.fcost = fcost;
+	}
+
+	public int getFCost(){
+		return fcost;
+	}
+
+	public void earn(){
+		Console.WriteLine("Father earned/has Rs.{0}",fcost+getGCost());
+	}
+}
+
+// Class Son
+public class Son : Father{
+	public int scost;
+
+	// Son constructor
+	public Son(int scost,int fcost, int gcost) : base(fcost,gcost){
+		this.scost = scost;
+	}
+
+	// earn function overidden
+	public void earn(){
+		base.earn();
+		Mother mom = new Mother(4000);
+		Console.WriteLine("Son earned/has Rs.{0}",scost+getFCost()+getGCost()+mom.getInterest());
+	}
+}
+
+//Main Class
+public class mainClass{
+
+	// Main method
+	public static void Main(){
+
+		//Object of class son with 3 parameters
+		Son son = new Son(1000,2000,3000);
+		son.earn(); //call to earn function 
+
+	}
+}

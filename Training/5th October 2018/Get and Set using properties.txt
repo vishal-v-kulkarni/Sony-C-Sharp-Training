@@ -1,0 +1,36 @@
+using System;
+
+//Class for Sony employees
+class SonyEmployees{
+	private int GID;
+
+	public int ID{
+		get{
+			return GID;
+		}
+		set{
+			GID = value;
+		}
+	}
+
+	private String S_Name;
+
+	public String Name{
+		get{
+			return S_Name;
+		}
+		set{
+			S_Name = value;
+		}
+	}
+}
+
+public class MainClass{
+	public static void Main(){
+		SonyEmployees sony = new SonyEmployees();
+		sony.ID = 1234;
+		sony.Name = "Vishal";
+
+		Console.WriteLine("GID : {0}\n Name : {1}",sony.ID,sony.Name);
+	}
+}

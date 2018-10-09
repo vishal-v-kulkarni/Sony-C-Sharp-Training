@@ -1,0 +1,29 @@
+using System;
+
+namespace examples
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string myInput;
+			int myInt;
+			
+			Console.WriteLine("Please enter the number");
+			
+			myInput = Console.ReadLine();
+			myInt = Int32.Parse(myInput);
+			
+			if(myInt > 0){
+				Console.WriteLine("Your number {0} is greater than 0",myInt);
+			}
+			if(myInt < 0){
+				Console.WriteLine("Your number {0} is less than 0",myInt);
+			}
+			if(myInt != 0){
+				Console.WriteLine("Your number {0} is not equal to 0",myInt);
+			}
+			
+        }
+    }
+}

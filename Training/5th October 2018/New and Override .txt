@@ -1,0 +1,29 @@
+using System;
+
+class Parent{
+	public virtual void speak(){
+		Console.WriteLine("I'm a parent class");
+	}
+}
+
+class Child : Parent{
+	public override void speak(){
+		Console.WriteLine("I'm a overriden method in child class");
+	}
+	/* 
+	public new  void speak(){
+		Console.WriteLine("I'm a overriden method in child class");
+	}*/
+}
+
+
+
+class MainClass{
+	public static void Main(){
+		Child child = new Child();
+		child.speak();
+		Parent parent = new Child();
+		parent.speak();
+
+	}
+}

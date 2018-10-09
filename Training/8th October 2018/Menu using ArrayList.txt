@@ -1,0 +1,220 @@
+using System;
+using System.Text.RegularExpressions;
+using System.Collections;
+
+//Breakfast Menu using methods
+namespace examples
+{
+
+	class Menu{
+
+		public String name = "";
+		public int price = 0;
+		public int quantity = 0;
+		public int subTotal =0;
+
+
+		public Menu(String name, int price){
+			this.name = name;
+			this.price = price;
+		}
+		override public String ToString(){
+			return name+" \t Rs."+price;
+		}
+	}
+
+    class Program{
+
+		public static int billTotal;
+		public static int billCounter;
+
+	    // main method
+        static void Main(string[] args){
+
+			String myChoice;
+
+			Program pg = new Program();
+
+			Menu[] menu = new Menu[5];
+
+			ArrayList menuList = new ArrayList();
+
+			Console.WriteLine("Please enter the menu items (Only 5 Items)");
+
+			// Method to generate the Menu
+			menuList = pg.generateMenu(menu);
+			
+			//Print the Menu
+			pg.printMenu(menuList);
+
+			do{
+				
+				//get input from user
+				Console.WriteLine("Press (A,B,C,D,E or P) to choose (Press ANY OTHER key to exit) : ");
+				myChoice = Console.ReadLine();
+
+				//Make decision based on the user's choice
+				pg.makeDecision(myChoice,menuList);
+
+			}while(true); //Keep going until the user wants to quit
+
+			
+			
+		}
+
+
+		void makeDecision(String myChoice,ArrayList menuList){
+			int iCounter1 = -1;
+
+			switch(myChoice){
+				case "A":
+				case "a":
+					billCounter++;
+					
+					for(int iCounter=0;iCounter<menuList.Count;iCounter++){
+						if(((Menu)menuList[iCounter]).name == "Idli"){
+							iCounter1 = iCounter;
+							break;
+						}
+					}
+					((Menu)menuList[iCounter1]).quantity++;
+					((Menu)menuList[iCounter1]).subTotal = ((Menu)menuList[iCounter1]).quantity * ((Menu)menuList[iCounter1]).price;
+					billTotal = billTotal + ((Menu)menuList[iCounter1]).price;
+					Console.WriteLine("You have selected {0} || Current Bill Amount : Rs.{1} (Press ANY key to exit)",((Menu)menuList[iCounter1]).name,billTotal);
+					break;
+				case "B":
+				case "b":
+					billCounter++;
+					//int iCounter1 = -1;
+					for(int iCounter=0;iCounter<menuList.Count;iCounter++){
+						if(((Menu)menuList[iCounter]).name == "Dosa"){
+							iCounter1 = iCounter;
+							break;
+						}
+					}
+					((Menu)menuList[iCounter1]).quantity++;
+					((Menu)menuList[iCounter1]).subTotal = ((Menu)menuList[iCounter1]).quantity * ((Menu)menuList[iCounter1]).price;
+					billTotal = billTotal + ((Menu)menuList[iCounter1]).price;
+					Console.WriteLine("You have selected {0} || Current Bill Amount : Rs.{1} (Press ANY key to exit)",((Menu)menuList[iCounter1]).name,billTotal);
+					break;
+				case "C":
+				case "c":
+					billCounter++;
+					//int iCounter1 = -1;
+					for(int iCounter=0;iCounter<menuList.Count;iCounter++){
+						if(((Menu)menuList[iCounter]).name == "Pasta"){
+							iCounter1 = iCounter;
+							break;
+						}
+					}
+					((Menu)menuList[iCounter1]).quantity++;
+					((Menu)menuList[iCounter1]).subTotal = ((Menu)menuList[iCounter1]).quantity * ((Menu)menuList[iCounter1]).price;
+					billTotal = billTotal + ((Menu)menuList[iCounter1]).price;
+					Console.WriteLine("You have selected {0} || Current Bill Amount : Rs.{1} (Press ANY key to exit)",((Menu)menuList[iCounter1]).name,billTotal);
+					break;
+				case "D":
+				case "d":
+					billCounter++;
+					//int iCounter1 = -1;
+					for(int iCounter=0;iCounter<menuList.Count;iCounter++){
+						if(((Menu)menuList[iCounter]).name == "Upma"){
+							iCounter1 = iCounter;
+							break;
+						}
+					}
+					((Menu)menuList[iCounter1]).quantity++;
+					((Menu)menuList[iCounter1]).subTotal = ((Menu)menuList[iCounter1]).quantity * ((Menu)menuList[iCounter1]).price;
+					billTotal = billTotal + ((Menu)menuList[iCounter1]).price;
+					Console.WriteLine("You have selected {0} || Current Bill Amount : Rs.{1} (Press ANY key to exit)",((Menu)menuList[iCounter1]).name,billTotal);
+					break;
+				case "E":
+				case "e":
+					billCounter++;
+					//int iCounter1 = -1;
+					for(int iCounter=0;iCounter<menuList.Count;iCounter++){
+						if(((Menu)menuList[iCounter]).name == "Puri"){
+							iCounter1 = iCounter;
+							break;
+						}
+					}
+					((Menu)menuList[iCounter1]).quantity++;
+					((Menu)menuList[iCounter1]).subTotal = ((Menu)menuList[iCounter1]).quantity * ((Menu)menuList[iCounter1]).price;
+					billTotal = billTotal + ((Menu)menuList[iCounter1]).price;
+					Console.WriteLine("You have selected {0} || Current Bill Amount : Rs.{1} (Press ANY key to exit)",((Menu)menuList[iCounter1]).name,billTotal);
+					break;
+				case "P":
+				case "p":
+					this.billPrint(menuList);
+					break;
+				default:
+					Console.WriteLine("Are you sure to exit.? Press Y to exit or N to continue");
+					String choice = Console.ReadLine();
+					if(choice == "Y" || choice == "y"){
+						System.Environment.Exit(0);
+					}else{
+						break;
+					}
+					break;
+
+			}
+
+		}
+
+		public void billPrint(ArrayList menuList){
+			Console.WriteLine("******************************************** BILL INVOICE **********************************************");
+			Console.WriteLine("Sl.No. \t\t|\t\t Name \t\t|\t\t Quantity \t|\t\t Price ");
+			Console.WriteLine("-------------------------------------------------------------------------------------------------------");
+			for(int iCounter=0;iCounter<5;iCounter++){
+				Console.WriteLine("{0} \t\t|\t\t {1} \t\t|\t\t {2} \t\t|\t\t Rs.{3}",iCounter+1,((Menu)menuList[iCounter]).name,((Menu)menuList[iCounter]).quantity,((Menu)menuList[iCounter]).subTotal);
+			}
+			Console.WriteLine("--------------------------------------------------------------------------------------------------------");
+			Console.WriteLine("Total Items : \t {0} \t\t\t\t\t\t\t\t Total Price : \t Rs.{1}",billCounter,billTotal);
+			Console.WriteLine("********************************************************************************************************");
+		}
+
+		public ArrayList generateMenu(Menu[] menu){
+
+			ArrayList menuList = new ArrayList();
+			menu[0] = new Menu("Idli",20);
+
+			menu[1] = new Menu("Dosa",30);
+
+			menu[2] = new Menu("Pasta",40);
+			
+			menu[3] = new Menu("Upma",15);
+			
+			menu[4] = new Menu("Puri",35);
+
+			for(int iCounter=0;iCounter<5;iCounter++){
+				menuList.Add(menu[iCounter]);
+			}
+
+			return menuList;
+		
+		}
+
+		public void printMenu(IEnumerable menuList){
+			int ascii = 65;
+			Console.WriteLine("My Breakfast Menu : ");
+			Console.WriteLine("   Name \t Price");
+			foreach(Object obj in menuList){
+				Console.Write("{0}. "+obj+"\n",Convert.ToChar(ascii));
+				ascii++;
+			}
+			Console.WriteLine("P. Print Bill");
+			Console.WriteLine();
+			
+		}
+
+		
+    }
+}
+
+
+//generateMenu - prepare the menu
+//printMenu - print the menu
+//billPrint send to printer through array
+
+/*for(int iCounter=0;iCounter<5;iCounter++){
+				Console.WriteLine("Name : {0} \t Price : {1} ",menu[iCounter].name,menu[iCounter].price);
+			}*/

@@ -1,0 +1,43 @@
+using System;
+using System.Text.RegularExpressions;
+
+//Class example
+namespace examples{
+
+	class OutputClass{
+
+		String myOutput;
+
+		//Constructor
+		public OutputClass(String myOutput){
+			this.myOutput = myOutput;
+		}
+
+		//Instance method
+		public void printString(){
+			Console.WriteLine(myOutput);
+		}
+
+		//Destructor
+		~OutputClass(){
+			//Some resource cleanup routines
+		}
+	}
+
+	class ExampleClass{
+
+		//Main method
+		public static void Main(String[] args){
+
+			//Instance of outputClass
+			OutputClass oc = new OutputClass("Hi this is Microsoft Competency");
+
+			//Class outputclass method
+			oc.printString();
+
+		}
+	}
+
+
+	
+}

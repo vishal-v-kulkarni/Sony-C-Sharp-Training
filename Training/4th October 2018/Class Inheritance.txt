@@ -1,0 +1,30 @@
+using System;
+
+public class Parent{
+	String parentString;
+	public Parent(){
+		Console.WriteLine("Parent Constructor");
+	}
+	public Parent(String myString){
+		parentString = myString;
+		Console.WriteLine(parentString);
+	}
+	public void print(){
+		Console.WriteLine("I'm a parent class");
+	}
+}
+
+public class Child :Parent{
+	public Child() : base("From Derived"){     //base() is same as super() in java
+		Console.WriteLine("Child Constructor");
+	}
+	public new void print(){
+		base.print();
+		Console.WriteLine("Im a child class");
+	}
+	public static void Main(){
+		Child child = new Child();
+		child.print();
+		((Parent)child).print();
+	}
+}

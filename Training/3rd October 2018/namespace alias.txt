@@ -1,0 +1,40 @@
+using System;
+using aliasName1 = examples.tutorial.myExample1;
+using aliasName2 = examples.tutorial.myExample2;
+
+//Namespace example
+namespace examples{
+
+	//nested namespace
+	namespace tutorial{
+
+		class myExample1{
+
+			public static void myPrint1(){
+				Console.WriteLine("1st Namespace member");
+			}
+		}
+	}
+
+	//Program start class
+	class NameSpaceCalling{
+		//Main program
+		public static void Main(String[] args){
+			aliasName1.myPrint1();
+			aliasName2.myPrint2();
+		}
+	}
+
+	
+	
+}
+
+//Another way of having a nested namespace
+namespace examples.tutorial{
+	class myExample2{
+
+			public static void myPrint2(){
+				Console.WriteLine("2nd Namespace member");
+			}
+		}
+}

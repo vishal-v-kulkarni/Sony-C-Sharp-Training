@@ -1,0 +1,104 @@
+using System;
+using System.Text.RegularExpressions;
+
+//Breakfast Menu using methods
+namespace examples
+{
+
+	class Menu{
+		public String name;
+		public int price;
+	}
+    class Program{
+	    // main method
+        static void Main(string[] args){
+			
+			String myChoice;
+
+			Program pg = new Program();
+
+			//Print the Menu
+			Console.WriteLine("My Breakfast Menu (Press any other key to exit)");
+
+			Console.WriteLine("I - Idli and Vada - Rs.35");
+			Console.WriteLine("D - Dosa - Rs.25");
+			Console.WriteLine("N - Noodles - Rs.20");
+			Console.WriteLine("P - Pasta - Rs.30");
+			Console.WriteLine("U - Upma - Rs.15");
+
+			Console.WriteLine("Choice (I,D,N,P,U) : ");
+			
+
+			do{
+				
+				//get input from user
+				myChoice = pg.getChoice();
+
+				//Make decision based on the user's choice
+				pg.makeDecision(myChoice);
+
+			}while(myChoice != "Y" && myChoice!= "y"); //Keep going until the user wants to quit
+			
+		}
+
+		//show menu and get user's choice
+		String getChoice(){
+
+			String myChoice;
+
+			//Retrieve the user's choice
+			myChoice = Console.ReadLine();
+
+			return myChoice;
+		}
+
+		//make decision
+		void makeDecision(String myChoice){
+
+			Menu menu = new Menu();
+
+			switch(myChoice){
+				case "I":
+				case "i":
+					menu.name = "Idli and Vada";
+					menu.price = 35;
+					this.menuPrint(ref menu);
+					break;
+				case "D":
+				case "d":
+					menu.name = "Dosa";
+					menu.price = 25;
+					this.menuPrint(ref menu);
+					break;
+				case "N":
+				case "n":
+					menu.name = "Noodles";
+					menu.price = 20;
+					this.menuPrint(ref menu);
+					break;
+				case "P":
+				case "p":
+					menu.name = "Pasta";
+					menu.price = 30;
+					this.menuPrint(ref menu);
+					break;
+				case "U":
+				case "u":
+					menu.name = "Upma";
+					menu.price = 15;
+					this.menuPrint(ref menu);
+					break;
+				default:
+					Console.WriteLine("Are you sure to exit.? Press Y to exit or N to continue");
+					myChoice = Console.ReadLine();
+					break;
+
+			}
+
+		}
+		// function to print the selected menu
+		void menuPrint(ref Menu menu){
+			Console.WriteLine("Breafast : {0} is selected and the Bill Amount is Rs.{1}",menu.name,menu.price);
+		}
+    }
+}

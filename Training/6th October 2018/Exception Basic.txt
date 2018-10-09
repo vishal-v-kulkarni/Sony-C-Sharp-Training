@@ -1,0 +1,15 @@
+using System;
+using System.IO;
+
+//FileNotFoundException
+class TryCatchDemo{
+	static void Main(String[] args){
+
+		try{
+			File.OpenRead("NonExistentFile");
+		}catch(Exception ex){
+			Console.WriteLine(ex.ToString());
+		}
+	}
+
+}

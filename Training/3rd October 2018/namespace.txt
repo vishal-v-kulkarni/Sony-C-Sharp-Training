@@ -1,0 +1,39 @@
+using System;
+using System.Text.RegularExpressions;
+
+//Namespace example
+namespace examples{
+
+	//nested namespace
+	namespace tutorial{
+
+		class myExample1{
+
+			public static void myPrint1(){
+				Console.WriteLine("1st Namespace member");
+			}
+		}
+	}
+
+	//Program start class
+	class NameSpaceCalling{
+		//Main program
+		public static void Main(String[] args){
+			tutorial.myExample1.myPrint1();
+			tutorial.myExample2.myPrint2();
+		}
+	}
+
+	
+	
+}
+
+//Another way of having a nested namespace
+namespace examples.tutorial{
+	class myExample2{
+
+			public static void myPrint2(){
+				Console.WriteLine("2nd Namespace member");
+			}
+		}
+}

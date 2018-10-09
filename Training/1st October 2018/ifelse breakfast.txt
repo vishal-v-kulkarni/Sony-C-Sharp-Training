@@ -1,0 +1,44 @@
+using System;
+
+namespace examples
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string myInput;
+			int myInt;
+			
+			Console.WriteLine("Breakfast Menu");
+			Console.WriteLine("1.Idli and Vada");
+			Console.WriteLine("2.Dosa");
+			Console.WriteLine("3.Sandwitch");
+			Console.WriteLine("4.Puri");
+			Console.WriteLine("4.Exit Menu");
+			Console.WriteLine("Please enter the number to select the menu");
+			
+			myInput = Console.ReadLine();
+			myInt = Int32.Parse(myInput);
+			
+			if(myInt == 1){
+				Console.WriteLine("Your menu number {0} is selected",myInt);
+			}
+			else if(myInt == 2){
+				Console.WriteLine("Your menu number {0} is selected",myInt);
+			}
+			else if(myInt == 3){
+				Console.WriteLine("Your menu number {0} is selected",myInt);
+			}
+			else if(myInt == 4){
+				Console.WriteLine("Your menu number {0} is selected",myInt);
+			}
+			else if(myInt == 5){
+				Console.WriteLine("Your menu number {0} is selected",myInt);
+			}
+			else{
+				Console.WriteLine("Please enter a valid number");
+			}
+			
+        }
+    }
+}

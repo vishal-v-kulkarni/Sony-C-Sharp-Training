@@ -1,0 +1,124 @@
+using System;
+
+interface Library{
+	void issueBooks();
+
+	void payFine();
+
+	void returnBook();
+}
+
+abstract class Membership{
+
+	public void validity(){
+		Console.WriteLine("The validity of the card is for 1 year");
+	}
+
+	public virtual void readBook(){
+		Console.WriteLine("No restrictions while reading the book");
+	}
+	
+
+}
+
+class silverMember : Membership,Library{
+
+	public void getPoints(){
+		Console.WriteLine("10 reward points added to your membership account");
+	}
+	override public void readBook(){
+		Console.WriteLine("Cannot use mobile and eat while reading the book");
+	}
+	public void issueBooks(){
+		Console.WriteLine("Maximum number of books to be issued is 2");
+	}
+	public void returnBook(){
+		Console.WriteLine("Return the book after 15 days");
+	}
+	public void payFine(){
+		Console.WriteLine("Pay fine of Rs.1/day*Number of days delayed");
+	}
+
+}
+
+class goldMember : silverMember{
+
+	public void getPayback(){
+		Console.WriteLine("Rs.20 cashback added to your membership account");
+	}
+
+	override public void readBook(){
+		Console.WriteLine("Cannot use mobile while reading the book");
+	}
+	public new void issueBooks(){
+		Console.WriteLine("Maximum number of books to be issued is 5");
+	}
+	public new void returnBook(){
+		Console.WriteLine("Return the book after 30 days");
+	}
+	public new void payFine(){
+		Console.WriteLine("Pay fine of Rs.2/day*Number of days delayed");
+	}
+}
+
+class platinumMember : goldMember{
+
+	public void getLounge(){
+		Console.WriteLine("Lounge facility provided to the member");
+	}
+
+	public new void issueBooks(){
+		Console.WriteLine("Maximum number of books to be issued is 10");
+	}
+	public new void returnBook(){
+		Console.WriteLine("Return the book after 45 days");
+	}
+	public new void payFine(){
+		Console.WriteLine("No penalty");
+	}
+
+}
+
+class MainClass{
+	public static void Main(){
+		Console.WriteLine("Silver Member facilities : ");
+		Console.WriteLine();
+		silverMember sm = new silverMember();
+		Console.Write("1.");sm.validity();
+		Console.Write("2.");sm.issueBooks();
+		Console.Write("3.");sm.readBook();
+		Console.Write("4.");sm.returnBook();
+		Console.Write("5.");sm.payFine();
+		Console.Write("6.");sm.getPoints();
+
+		Console.WriteLine();
+
+		Console.WriteLine("Gold Member facilities : ");
+		Console.WriteLine();
+		goldMember gm = new goldMember();
+		Console.Write("1.");gm.validity();
+		Console.Write("2.");gm.issueBooks();
+		Console.Write("3.");gm.readBook();
+		Console.Write("4.");gm.returnBook();
+		Console.Write("5.");gm.payFine();
+		Console.Write("6.");gm.getPoints();
+		Console.Write("7.");gm.getPayback();
+
+		Console.WriteLine();
+
+		Console.WriteLine("Platinum Member facilities : ");
+		Console.WriteLine();
+		platinumMember pm = new platinumMember();
+		Console.Write("1.");pm.validity();
+		Console.Write("2.");pm.issueBooks();
+		Console.Write("3.");pm.readBook();
+		Console.Write("4.");pm.returnBook();
+		Console.Write("5.");pm.payFine();
+		Console.Write("6.");pm.getPoints();
+		Console.Write("7.");pm.getPayback();
+		Console.Write("8.");pm.getLounge();
+
+	}
+
+
+}

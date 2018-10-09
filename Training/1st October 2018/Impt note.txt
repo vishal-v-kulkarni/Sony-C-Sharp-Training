@@ -1,0 +1,10 @@
+inline documentation
+variables naming convention
+message for the program
+pseudo code
+
+1.swap name and lastname using substring
+2.swap 2 variables with only 2 variables
+3.Take a input(short sentence) and print the vowels only once
+4.Count the appearance of letters in a string by taking a input
+ 

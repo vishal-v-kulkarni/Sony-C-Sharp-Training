@@ -1,0 +1,25 @@
+using System;
+using System.IO;
+
+public class ExpProg{
+	public static void Main(){
+		int iNum1=10;
+		int iNum2=Int32.Parse(Console.ReadLine());
+		try{
+			Console.WriteLine("Start Program");
+			if(iNum2==0){
+				throw new MyExp("DivideByZeroException raised");
+			}else{
+				Console.WriteLine("Divide : {0}",iNum1/iNum2);
+			}
+		}catch(Exception ex){
+			Console.WriteLine("Exception Caused : "+ ex.Message);
+		}
+	}
+}
+
+public class MyExp : System.Exception{
+	public MyExp(String StrMsg) : base(StrMsg){
+
+	}
+}

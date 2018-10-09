@@ -1,0 +1,45 @@
+using System;
+using System.Text.RegularExpressions;
+
+//Class example
+namespace examples{
+
+	class OuterClass{
+
+		class A{
+			public A(){
+				methodA();
+			}
+
+			public void methodA(){
+				Console.WriteLine("This is Method A");
+			}
+		}
+		class B{
+			public B(){
+				A a = new A();
+				methodB();
+			}
+
+			public void methodB(){
+				Console.WriteLine("This is Method B");
+			}
+		}
+
+		static void Main(string[] args){
+			B b = new B();
+		}
+	}
+
+	
+}
+
+/*class outer{
+
+class a - constructor CONA(class MA) - method MA(WriteLine statement)
+
+class b - constructor CONB(object of class a) - method MB(WriteLine statement)
+
+main(object of b then print mb then print "goodbye")
+
+}*/

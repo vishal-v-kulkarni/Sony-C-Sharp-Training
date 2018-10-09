@@ -1,0 +1,17 @@
+using System;
+using System.IO;
+
+//FileNotFoundException
+class TryCatchDemo{
+	static void Main(String[] args){
+		int iNum1 = 10;
+		int iNum2 = 0;
+
+		try{
+			Console.WriteLine("Divide : {0}",iNum1/iNum2);
+		}catch(Exception ex){
+			Console.WriteLine(ex.ToString());
+		}
+	}
+
+}

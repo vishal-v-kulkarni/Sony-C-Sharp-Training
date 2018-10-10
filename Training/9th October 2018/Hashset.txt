@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+
+class Program{
+	static HashSet<String> hSet1;
+	static HashSet<String> hSet2;
+
+	static void Main(String[] args){
+
+		String[] subjects1 = new String[]{
+			"C#",
+			"Java",
+			"Oracle",
+			"Sql",
+			"MySql",
+			"Sql"
+		};
+
+		hSet1 = CreateHashSet(subjects1);
+		Console.WriteLine("Printing the Hashset 1 : ");
+		PrintHashSet(hSet1);
+
+		subjects1 = new String[]{
+			"C#",
+			"Java",
+			"Oracle",
+			"Informex",
+			"Ingres",
+			"Sql"
+		};
+
+		hSet2 = CreateHashSet(subjects1);
+		Console.WriteLine("Printing the Hashset 2 : ");
+		PrintHashSet(hSet2);
+
+	}
+
+	public static HashSet<String> CreateHashSet(String[] subjects){
+
+		HashSet<String> hSet = new HashSet<String>(subjects);
+		return hSet;
+	}
+
+	public static void PrintHashSet(HashSet<String> hSet){
+		foreach(var n in hSet){
+			Console.WriteLine(n);
+		}
+	}
+}

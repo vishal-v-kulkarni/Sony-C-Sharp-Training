@@ -1,0 +1,30 @@
+using System;
+
+class Compare<T,S>{
+
+	T valueOne;
+	S valueTwo;
+
+	public Compare(T valueOne,S valueTwo){
+		this.valueOne = valueOne;
+		this.valueTwo = valueTwo;
+	}
+	
+	public bool CompareTo(){
+		if(valueOne.Equals(valueTwo)){
+			return true;
+		}
+		return false;
+	}
+
+}
+
+public class MainClass{
+	public static void Main(){
+		Compare<String,String> sCompare = new Compare<String,String>("Vishal","Kulkarni");
+		Console.WriteLine(sCompare.CompareTo());
+		Compare<int,int> iCompare = new Compare<int,int>(1,1);
+		Console.WriteLine(iCompare.CompareTo());
+		
+	}
+}

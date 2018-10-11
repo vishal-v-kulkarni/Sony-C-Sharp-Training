@@ -1,0 +1,33 @@
+using System;
+
+
+//Program to swap 2 integer variables without 3rd variable
+namespace examples
+{
+    class Program
+    {
+	    // main method
+        static void Main(string[] args)
+        {
+			// Declare the variables
+			int iVar1 = 10;
+			int iVar2 = 20;
+			
+			//print the intergers before swapping
+			Console.WriteLine("Integers before swapping :"+iVar1+" "+iVar2);
+			
+			//add both the integers
+			iVar1 = iVar1 + iVar2;
+			
+			//store iVar1 in iVar2
+			iVar2 = iVar1 - iVar2;
+			
+			//store iVar2 in iVar1
+			iVar1 = iVar1 - iVar2;
+			
+			//print the intergers after swapping
+			Console.WriteLine("Integers after swapping :"+iVar1+" "+iVar2);
+		   
+		}
+    }
+}

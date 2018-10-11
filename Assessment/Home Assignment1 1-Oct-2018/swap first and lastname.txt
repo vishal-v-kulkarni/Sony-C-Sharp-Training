@@ -1,0 +1,33 @@
+using System;
+
+
+//Program to swap firstname and lastname
+namespace examples
+{
+    class Program
+    {
+	    // main method
+        static void Main(string[] args)
+        {
+			// Declare firstname and lastname
+			String firstName = "Vishal";
+			String lastName = "Kulkarni";
+			
+			//print the strings before swapping
+			Console.WriteLine("Strings before swapping :"+firstName+" "+lastName);
+			
+			//concatenate both the strings
+			firstName = firstName + lastName;
+			
+			//store firstname in lastname
+			lastName = firstName.Substring(0,firstName.Length-lastName.Length);
+			
+			//store lastname in firstname
+			firstName = firstName.Substring(lastName.Length);
+			
+			//print the strings after swapping
+			Console.WriteLine("Strings after swapping :"+firstName+" "+lastName);
+		   
+		}
+    }
+}

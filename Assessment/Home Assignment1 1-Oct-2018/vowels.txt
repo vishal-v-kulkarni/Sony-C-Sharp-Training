@@ -1,0 +1,52 @@
+using System;
+
+
+//Program to print the vowels in a string
+namespace examples
+{
+    class Program
+    {
+	    // main method
+        static void Main(string[] args)
+        {
+			// Declare the vowels string and the counter variables
+			String vowels = "AEIOUaeiou";
+			int iACount=0,iECount=0,iICount=0,iOCount=0,iUCount=0;
+			
+			//Read the sentence as a string
+			Console.WriteLine("Enter a small sentence");
+			String sentence = Console.ReadLine().ToLower();
+			
+			//Find the vowels in the sentence
+			for(int iCounter=0;iCounter<sentence.Length;iCounter++){
+				String oneChar =  sentence.Substring(iCounter,1);
+				if(vowels.IndexOf(oneChar) != -1){
+					
+					//Check if the occurance of the vowels is only once
+					if(oneChar.Equals("a") && iACount < 1 ){
+						Console.WriteLine(oneChar);
+						iACount = iACount + 1;
+					}
+					if(oneChar.Equals("e") && iECount < 1 ){
+						Console.WriteLine(oneChar);
+						iECount = iECount + 1;
+					}
+					if(oneChar.Equals("i") && iICount < 1 ){
+						Console.WriteLine(oneChar);
+						iICount = iICount + 1;
+					}
+					if(oneChar.Equals("o") && iOCount < 1 ){
+						Console.WriteLine(oneChar);
+						iOCount = iOCount + 1;
+					}
+					if(oneChar.Equals("u") && iUCount < 1 ){
+						Console.WriteLine(oneChar);
+						iUCount = iUCount + 1;
+					}
+					
+				}
+			}
+		   
+		}
+    }
+}

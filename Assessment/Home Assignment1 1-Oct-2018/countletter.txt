@@ -1,0 +1,31 @@
+using System;
+using System.Text.RegularExpressions;
+
+//Program to occurance of a letter or word based on user input
+namespace examples
+{
+    class Program
+    {
+	    // main method
+        static void Main(string[] args)
+        {
+			//Read the user input for sentence
+			Console.WriteLine("Enter the sentence");
+			String sentence = Console.ReadLine().ToLower();
+			
+			//Read the user input for word to be searched
+			Console.WriteLine("Enter the letter or word to be searched");
+			String matchString = Console.ReadLine().ToLower();
+			
+			//Match the word in the sentence using regular expressions and store it in match collections
+			MatchCollection mt = Regex.Matches(sentence, matchString);
+			int iCount = 0;
+			
+			//Iterate the match collection in a loop and count the occurance of searched letter/word
+			foreach (Match match in mt){
+				iCount++;
+			}
+			Console.WriteLine("{0}" + " occured " + "{1}" + " times", matchString, iCount);
+		}
+    }
+}

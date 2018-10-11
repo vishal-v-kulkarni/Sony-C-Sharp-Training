@@ -1,0 +1,341 @@
+using System;
+using System.Text.RegularExpressions;
+using System.Collections;
+using System.IO;
+using System.Text;
+
+
+//Breakfast Menu using methods
+namespace examples
+{
+
+	class Menu{
+
+		public String name = "";
+		public int price = 0;
+		public int quantity = 0;
+		public int subTotal =0;
+
+
+		public Menu(String name, int price){
+			this.name = name;
+			this.price = price;
+		}
+		override public String ToString(){
+			return name+" \t Rs."+price;
+		}
+	}
+
+    class Program{
+
+		public static int billTotal;
+		public static int billCounter;
+		public static String myChoice1="";
+		public static int orderNum = 0;
+		public static int status =0;
+		public static String custName ="";
+		public static int processedNum=0;
+
+	    // main method
+        static void Main(string[] args){
+
+			StreamWriter F1 =new StreamWriter(@"D:\Dotnet\Training\10th October 2018\BFMenu\pNum.dat",false,Encoding.ASCII);
+			StreamWriter F2 =new StreamWriter(@"D:\Dotnet\Training\10th October 2018\BFMenu\oNum.dat",false,Encoding.ASCII);
+
+			F1.Write(processedNum);
+			F2.Write(orderNum);
+
+			F1.Close();
+			F2.Close();
+
+			String myChoice;
+			
+
+			
+
+			Program pg = new Program();
+
+			Menu[] menu = new Menu[5];
+
+			
+
+			// Method to generate the Menu
+			
+			
+			//Print the Menu
+			while(true){
+
+				
+
+				billCounter = 0;
+				billTotal = 0;
+
+				ArrayList menuList = new ArrayList();
+
+				menuList = pg.generateMenu(menu);
+
+				pg.printMenu(menuList);
+
+				checkExit();
+
+				Console.WriteLine("Enter the Name of the Customer : ");
+				custName="";
+				custName = Console.ReadLine();
+
+				do{
+					
+					//get input from user
+					Console.WriteLine("Press (A,B,C,D,E or P) to choose (Press ANY OTHER key to exit) : ");
+					myChoice = Console.ReadLine();
+
+					//Make decision based on the user's choice
+					pg.makeDecision(myChoice,menuList);
+
+				}while(myChoice1 != "Y" ); //Keep going until the user wants to quit
+
+			}
+			
+		}
+
+
+		public static void checkExit(){
+			int iNum = 0;
+			label : 
+			if(orderNum > 1000){
+				System.Environment.Exit(0);
+			}else{
+				
+				Console.WriteLine("Do you want to TAKE ORDERS or EXIT\n 1-->Take new order \n 2-->Process Order \n 3-->Exit the Menu System\n");
+				iNum = Int32.Parse(Console.ReadLine());
+				if(iNum==1){
+					orderNum++;
+					StreamWriter F2 =new StreamWriter(@"D:\Dotnet\Training\10th October 2018\BFMenu\oNum.dat",false,Encoding.ASCII);
+
+					F2.Write(orderNum);
+
+					F2.Close();
+				}else if(iNum==2){
+					processOrder();
+					Console.WriteLine("Processed Orders");
+					StreamWriter F1 =new StreamWriter(@"D:\Dotnet\Training\10th October 2018\BFMenu\pNum.dat",false,Encoding.ASCII);
+					
+
+					F1.Write(processedNum);
+					
+
+					F1.Close();
+					
+
+					goto label;
+				}else{
+					System.Environment.Exit(0);						
+				}
+			}
+
+		}
+
+		public static void processOrder(){
+			status=1;
+			String[] strArray;
+
+			StreamReader R1 = new StreamReader(@"D:\Dotnet\Training\10th October 2018\BFMenu\pNum.dat");
+			StreamReader R2 = new StreamReader(@"D:\Dotnet\Training\10th October 2018\BFMenu\oNum.dat");
+
+			int pNum = R1.Read()-48;
+			int oNum = R2.Read()-48;
+
+			R1.Close();
+			R2.Close();
+
+			Console.WriteLine(pNum);
+			Console.WriteLine(oNum);
+
+
+			for(int iCounter=pNum+1;iCounter<=oNum;iCounter++){
+				StreamReader F1 =new StreamReader(@"D:\Dotnet\Training\10th October 2018\BFMenu\Files\00"+iCounter+".dat");
+				StreamWriter F2 =new StreamWriter(@"D:\Dotnet\Training\10th October 2018\BFMenu\processedFiles\processed_00"+iCounter+".dat",false,Encoding.ASCII);
+				String fLine="";
+				fLine = F1.ReadLine();
+				while(fLine!=null){
+					strArray = fLine.Split(",");
+					F2.WriteLine("{0},{1},{2},{3},{4}",strArray[0],strArray[1],strArray[2],strArray[3],status);
+					fLine = F1.ReadLine();
+				}
+
+				F1.Close();
+				F2.Close();
+
+				File.Delete(@"D:\Dotnet\Training\10th October 2018\BFMenu\Files\00"+iCounter+".dat");
+
+			}
+			processedNum++;
+			status = 0; 
+		}
+		void makeDecision(String myChoice,ArrayList menuList){
+			int iCounter1 = -1;
+			myChoice1 = "";
+			switch(myChoice){
+				case "A":
+				case "a":
+					billCounter++;
+					
+					for(int iCounter=0;iCounter<menuList.Count;iCounter++){
+						if(((Menu)menuList[iCounter]).name == "Idli"){
+							iCounter1 = iCounter;
+							break;
+						}
+					}
+					((Menu)menuList[iCounter1]).quantity++;
+					((Menu)menuList[iCounter1]).subTotal = ((Menu)menuList[iCounter1]).quantity * ((Menu)menuList[iCounter1]).price;
+					billTotal = billTotal + ((Menu)menuList[iCounter1]).price;
+					Console.WriteLine("You have selected {0} || Current Bill Amount : Rs.{1} (Press ANY key to exit)",((Menu)menuList[iCounter1]).name,billTotal);
+					break;
+				case "B":
+				case "b":
+					billCounter++;
+					
+					for(int iCounter=0;iCounter<menuList.Count;iCounter++){
+						if(((Menu)menuList[iCounter]).name == "Dosa"){
+							iCounter1 = iCounter;
+							break;
+						}
+					}
+					((Menu)menuList[iCounter1]).quantity++;
+					((Menu)menuList[iCounter1]).subTotal = ((Menu)menuList[iCounter1]).quantity * ((Menu)menuList[iCounter1]).price;
+					billTotal = billTotal + ((Menu)menuList[iCounter1]).price;
+					Console.WriteLine("You have selected {0} || Current Bill Amount : Rs.{1} (Press ANY key to exit)",((Menu)menuList[iCounter1]).name,billTotal);
+					break;
+				case "C":
+				case "c":
+					billCounter++;
+					
+					for(int iCounter=0;iCounter<menuList.Count;iCounter++){
+						if(((Menu)menuList[iCounter]).name == "Pasta"){
+							iCounter1 = iCounter;
+							break;
+						}
+					}
+					((Menu)menuList[iCounter1]).quantity++;
+					((Menu)menuList[iCounter1]).subTotal = ((Menu)menuList[iCounter1]).quantity * ((Menu)menuList[iCounter1]).price;
+					billTotal = billTotal + ((Menu)menuList[iCounter1]).price;
+					Console.WriteLine("You have selected {0} || Current Bill Amount : Rs.{1} (Press ANY key to exit)",((Menu)menuList[iCounter1]).name,billTotal);
+					break;
+				case "D":
+				case "d":
+					billCounter++;
+					
+					for(int iCounter=0;iCounter<menuList.Count;iCounter++){
+						if(((Menu)menuList[iCounter]).name == "Upma"){
+							iCounter1 = iCounter;
+							break;
+						}
+					}
+					((Menu)menuList[iCounter1]).quantity++;
+					((Menu)menuList[iCounter1]).subTotal = ((Menu)menuList[iCounter1]).quantity * ((Menu)menuList[iCounter1]).price;
+					billTotal = billTotal + ((Menu)menuList[iCounter1]).price;
+					Console.WriteLine("You have selected {0} || Current Bill Amount : Rs.{1} (Press ANY key to exit)",((Menu)menuList[iCounter1]).name,billTotal);
+					break;
+				case "E":
+				case "e":
+					billCounter++;
+					
+					for(int iCounter=0;iCounter<menuList.Count;iCounter++){
+						if(((Menu)menuList[iCounter]).name == "Puri"){
+							iCounter1 = iCounter;
+							break;
+						}
+					}
+					((Menu)menuList[iCounter1]).quantity++;
+					((Menu)menuList[iCounter1]).subTotal = ((Menu)menuList[iCounter1]).quantity * ((Menu)menuList[iCounter1]).price;
+					billTotal = billTotal + ((Menu)menuList[iCounter1]).price;
+					Console.WriteLine("You have selected {0} || Current Bill Amount : Rs.{1} (Press ANY key to exit)",((Menu)menuList[iCounter1]).name,billTotal);
+					break;
+				case "P":
+				case "p":
+					this.billPrint(menuList);
+					break;
+				default:
+					Console.WriteLine("Are you sure to exit.? Press Y to exit or N to continue");
+					String choice = Console.ReadLine();
+					if(choice == "Y" || choice == "y"){
+						this.billPrint(menuList);
+						this.fileStore(menuList);
+						myChoice1 = "Y";
+						break;
+					}
+
+					break;
+
+			}
+
+		}
+
+		public void billPrint(ArrayList menuList){
+			int iCounter1 =0;
+			Console.WriteLine("Customer Name : {0} \t Order Number : {1}",custName,orderNum);
+			Console.WriteLine("******************************************************* BILL INVOICE *************************************************************");
+			Console.WriteLine("Sl.No. \t\t|\t\t Name \t\t|\t\t Quantity \t|\t\t Price \t\t|\t Status ");
+			Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------------");
+			for(int iCounter=0;iCounter<5;iCounter++){
+				if(((Menu)menuList[iCounter]).quantity > 0){
+					Console.WriteLine("{0} \t\t|\t\t {1} \t\t|\t\t {2} \t\t|\t\t Rs.{3} \t\t|\t {4}",iCounter1+1,((Menu)menuList[iCounter]).name,((Menu)menuList[iCounter]).quantity,((Menu)menuList[iCounter]).subTotal,status);
+					iCounter1++;
+				}
+			}
+			Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------------");
+			Console.WriteLine("Total Items : \t {0} \t\t\t\t\t\t\t\t\t\t\t Total Price : \t Rs.{1}",billCounter,billTotal);
+			Console.WriteLine("**********************************************************************************************************************************");
+
+		}
+
+		public void fileStore(ArrayList menuList){
+			int iCounter1 =0;
+			
+			StreamWriter F =new StreamWriter(@"D:\Dotnet\Training\10th October 2018\BFMenu\Files\00"+orderNum+".dat",false,Encoding.ASCII);
+			for(int iCounter=0;iCounter<5;iCounter++){
+				if(((Menu)menuList[iCounter]).quantity > 0){
+					F.WriteLine("{0},{1},{2},{3},{4}",iCounter1+1,((Menu)menuList[iCounter]).name,((Menu)menuList[iCounter]).quantity,((Menu)menuList[iCounter]).subTotal,status);
+					iCounter1++;
+				}
+			}
+			F.Close();
+
+		}
+
+		public ArrayList generateMenu(Menu[] menu){
+
+			ArrayList menuList = new ArrayList();
+			menu[0] = new Menu("Idli",20);
+
+			menu[1] = new Menu("Dosa",30);
+
+			menu[2] = new Menu("Pasta",40);
+			
+			menu[3] = new Menu("Upma",15);
+			
+			menu[4] = new Menu("Puri",35);
+
+			for(int iCounter=0;iCounter<5;iCounter++){
+				menuList.Add(menu[iCounter]);
+			}
+
+			return menuList;
+		
+		}
+
+		public void printMenu(IEnumerable menuList){
+			int ascii = 65;
+			Console.WriteLine("My Breakfast Menu : ");
+			Console.WriteLine("   Name \t Price");
+			foreach(Object obj in menuList){
+				Console.Write("{0}. "+obj+"\n",Convert.ToChar(ascii));
+				ascii++;
+			}
+			Console.WriteLine("P. Print Bill");
+			Console.WriteLine();
+			
+		}
+
+		
+    }
+}

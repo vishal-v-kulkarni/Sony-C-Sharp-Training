@@ -1,0 +1,89 @@
+using System;
+using System.IO;
+using System.Text;
+
+class Program{
+	public static void Main(){
+
+		//FileIO();
+
+		//FileWriteLine();
+
+		//FileReadLineByLine();
+
+		//FileReadAllLines();
+
+		//FileCopy();
+
+		//FileDelete();
+
+
+		//Call to the Split method
+		SplitMethod();
+
+
+	}
+
+	/* Method to split firstname and lastname */
+
+	public static void SplitMethod(){
+		String fullName = "Vishal,Kulkarni";
+
+		//Split string into fname and lname
+		String[] nameArray = fullName.Split(",");
+
+		//Print the stringarray using foreach loop
+		foreach(String var in nameArray){
+			Console.WriteLine(var);
+		}
+	}
+
+	public static void FileIO(){
+		FileStream F = new FileStream(@"D:\Dotnet\test.dat",FileMode.OpenOrCreate,FileAccess.ReadWrite);
+		for(int i=1;i<20;i++){
+			F.WriteByte((byte)i);
+		}
+		F.Position =0;
+		for(int i=0;i<=20;i++){
+			Console.Write(F.ReadByte()+" ");
+		}
+		F.Close();
+		Console.ReadKey();
+	}
+	public static void FileWriteLine(){
+		StreamWriter F =new StreamWriter(@"D:\Dotnet\test.dat",false,Encoding.ASCII);
+		for(int i=0;i<=20;i++){
+			F.WriteLine("This is a example {0}",i);
+		}
+		F.Close();
+	}
+
+	public static void FileReadLineByLine(){
+		StreamReader F =new StreamReader(@"D:\Dotnet\test.dat");
+		String a_line;
+		a_line=F.ReadLine();
+		Console.WriteLine("Printing Line by line");
+		while(a_line!=null){
+			Console.WriteLine(a_line);
+			a_line=F.ReadLine();
+		}
+		F.Close();
+		Console.ReadKey();
+	}
+
+	public static void FileReadAllLines(){
+		String all_lines;
+		all_lines = File.ReadAllText(@"D:\Dotnet\test.dat");
+		Console.WriteLine("\nPrinting all the lines \n"+all_lines);
+	}
+
+	public static void FileCopy(){
+		File.Copy(@"D:\Dotnet\test.dat",@"D:\Dotnet\test1.dat",true);
+		Console.WriteLine("File Copied");
+	}	
+
+	public static void FileDelete(){
+		File.Delete(@"D:\Dotnet\test.dat");
+		Console.WriteLine("File Deleted");
+	}
+}

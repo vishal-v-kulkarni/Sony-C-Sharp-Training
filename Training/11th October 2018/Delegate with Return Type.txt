@@ -1,0 +1,32 @@
+using System;
+
+//This is a delegate declaration
+public delegate String MyDelegate(String s);
+
+public class FirstDelegate{
+	//this is the delegate method handler
+	public static String Method1(String a){
+		Console.WriteLine("Method 1 " + a);
+		return a;
+	}
+
+	public static String Method2(String b){	
+		Console.WriteLine("Method 2 "+ b);
+		return b;
+	}
+}
+
+class SimpleDelegate{
+	static void Main(String[] args){
+
+		//this is a delegate instantiation
+		MyDelegate mydel = null;
+		mydel = new MyDelegate(FirstDelegate.Method1);
+
+		mydel = mydel + new MyDelegate(FirstDelegate.Method2);
+
+		String a = mydel.Invoke("Vishal Kulkarni");
+
+		Console.WriteLine(a);
+	}
+}

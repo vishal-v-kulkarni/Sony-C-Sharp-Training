@@ -1,0 +1,50 @@
+﻿@using MVC_Example.Models
+@model List<MathOperation>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <form action="../Math/Result" method="post">
+            <table border="1" style="text-align:center">
+                <tr>
+                    <th>Number 1</th>
+                    <th>Operation</th>
+                    <th>Number 2</th>
+                    <th>Result</th>
+                </tr>
+                @if (Model != null)
+                {
+                    foreach (MathOperation mop in Model)
+                    {
+                        <tr>
+                            <td>@mop.num1</td>
+                            <td>@mop.op</td>
+                            <td>@mop.num2</td>
+                            <td>@mop.result</td>
+                        </tr>
+                    }
+                
+                }
+                <tr>
+                    <td><input name="num1" /></td>
+                    <td><input name="op" /></td>
+                    <td><input name="num2" /></td>
+                    <td><button name="result">Result</button></td>
+                </tr>
+
+            </table>
+
+        </form>
+
+    </div>
+</body>
+</html>
